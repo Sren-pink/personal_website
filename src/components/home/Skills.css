@@ -1,0 +1,273 @@
+/* Overall grid layout and default background color */
+.skills {
+    width: 100vw;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+}
+
+.grid {
+    padding: 5vw 0;
+    width: 100vw;
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    grid-template-columns: 10vw 10vw 10vw 20vw 10vw 10vw 10vw;
+    grid-template-rows: 1fr 1fr 20vw 1fr 1fr;
+}
+
+#skills {
+    display: grid;
+    grid-column: 4 / 5;
+    grid-row: 3 / 4;
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+    justify-content: center;
+    align-content: center;
+
+    background-color: transparent;
+    box-shadow: 5px 5px 25px 10px rgba(255, 255, 255, 0.80) inset;
+    filter: drop-shadow(0px 4px 1px #ecf8ff);
+
+    animation: floatSkills 8s ease-in-out infinite;
+}
+
+
+#skills p {
+    padding-top: 15%;
+    margin: 0;
+    display: flex;
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-size: 10vw;
+    font-style: normal;
+}
+
+.big_c {
+    width: 15vw;
+    height: 15vw;
+    border-radius: 50%;
+    font-size: 6vw;
+
+    background-color: transparent;
+    box-shadow: 2px 2px 25px 10px rgba(255, 255, 255, 0.80) inset;    
+    filter: drop-shadow(2px 4px 1px var(--bubble-shadow));
+
+    animation: floatBig 8s ease-in-out infinite alternate;
+}
+
+.small_c {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    font-size: 4vw;
+
+    background-color: transparent;
+    box-shadow: 2px 2px 25px 10px rgba(255, 255, 255, 0.80) inset;
+    filter: drop-shadow(2px 4px 1px var(--bubble-shadow));
+
+    animation: floatSmall 5s ease-in-out infinite alternate;
+}
+
+p {
+    margin: 0;
+
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-style: normal;
+
+    display: flex;
+    justify-content: center;
+
+    color: var(--skills-text);
+    text-align: center;
+}
+
+.top {
+    padding-top: 25%;
+    line-height: 75%;
+}
+
+.bottom {
+    padding-bottom: 15%;
+    line-height: 75%;
+}
+
+#js .top {
+    padding-top: 30%;
+    line-height: 75%;
+}
+
+#procreate .top {
+    padding-top: 30%;
+    line-height: 75%;
+}
+
+#html {
+    display: grid;
+    grid-column: 1 / 3;
+    grid-row: 2 / 4;
+
+    align-self: flex-start;
+    justify-self: flex-start;
+    justify-content: center;
+    align-content: center;
+}
+
+#figma {
+    display: grid;
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+
+    align-self: flex-end;
+    justify-self: flex-end;
+    justify-content: center;
+    align-content: center;
+
+    position: relative;
+    right: 5vw;
+}
+
+#procreate {
+    width: 18vw;
+    height: 18vw;
+    display: grid;
+    grid-column: 2 / 4;
+    grid-row: 4 / 6;
+
+    align-self: flex-end;
+    justify-self: flex-end;
+    justify-content: center;
+    align-content: center;
+}
+
+#js {
+    width: 12.5vw;
+    height: 12.5vw;
+    display: grid;
+    grid-column: 3 / 5;
+    grid-row: 1 / 2;
+
+    align-self: flex-end;
+    justify-self: flex-start;
+    justify-content: center;
+    align-content: center;
+}
+
+#excel {
+    display: grid;
+    grid-column: 5 / 6;
+    grid-row: 1 / 2;
+
+    align-self: flex-end;
+    justify-self: flex-start;
+    justify-content: center;
+    align-content: center;
+
+    position: relative;
+    top: 2vw;
+    right: 5vw;
+}
+
+#css {
+    display: grid;
+    grid-column: 5 / 6;
+    grid-row: 2 / 4;
+
+    align-self: flex-start;
+    justify-self: flex-start;
+    justify-content: center;
+    align-content: center;
+
+    position: relative;
+    left: 7vw;
+}
+
+#canva {
+    display: grid;
+    grid-column: 6 / 8;
+    grid-row: 3 / 4;
+
+    align-self: flex-end;
+    justify-self: flex-end;
+    justify-content: center;
+    align-content: center;
+
+    position: relative;
+    top: 5vw;
+}
+
+#react {
+    display: grid;
+    grid-column: 5 / 6;
+    grid-row: 4 / 6;
+
+    align-self: flex-end;
+    justify-self: center;
+    justify-content: center;
+    align-content: center;
+
+    position: relative;
+    bottom: 4vw;
+}
+
+/*Animation*/
+
+/* Big circles float slower and move further */
+@keyframes floatBig {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(0.5vw, -1vw); }
+    50%  { transform: translate(1vw, -2vw); }
+    75%  { transform: translate(-0.5vw, -1vw); }
+    100% { transform: translate(0vw, 0); }
+  }
+
+@keyframes floatSmall {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(0.25vw, -0.75vw); }
+    50%  { transform: translate(0.5vw, -1.5vw); }
+    75%  { transform: translate(-0.25vw, -0.75vw); }
+    100% { transform: translate(0vw, 0); }
+  }
+
+  @keyframes floatSkills {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(0.4vw, -0.8vw); }
+    50%  { transform: translate(0.8vw, -1.6vw); }
+    75%  { transform: translate(-0.4vw, -0.8vw); }
+    100% { transform: translate(0vw, 0); }
+  }
+  
+  #html {
+    animation-delay: 0s;
+  }
+  
+  #procreate {
+    animation-delay: 2s;
+  }
+  
+  #css {
+    animation-delay: 1s;
+  }
+  
+  #canva {
+    animation-delay: 3s;
+  }
+  
+  #figma {
+    animation-delay: 0.5s;
+  }
+  
+  #js {
+    animation-delay: 1.5s;
+  }
+  
+  #excel {
+    animation-delay: 2.5s;
+  }
+  
+  #react {
+    animation-delay: 1s;
+  }
+  

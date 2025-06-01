@@ -1,0 +1,121 @@
+.Aboutme {
+    width: 100vw;
+    height: 35vw;
+    display: flex;
+    align-items: center;
+}
+
+figure {
+    width: 100vw;
+    height: 25vw;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.leftside {
+    width: 25vw;
+}
+
+.image {
+    width: 30vw;
+    height: 30vw;
+    position: relative;
+    top: -3vw;
+}
+
+.rightside {
+    width: 60vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+figcaption {
+    width: 60vw;
+    color: var(--main-pink);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title {
+    margin: 1vw 0 3.5vw 0;
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-size: 8vw;
+    font-style: normal;
+    line-height: 20%;
+
+    text-align: left;
+}
+
+.description {
+    margin: 0;
+    padding-left: 4vw;
+    font-family: "Afacad", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-size: 2vw;
+    font-style: normal;
+
+    color: var(--main-pink);
+    text-align: left;
+}
+
+.buttons {
+    width: 22vw;
+    display: flex;
+    align-self: flex-end;
+}
+
+.home-buttons {
+    justify-content: space-between;
+}
+
+.aboutme-buttons {
+    justify-content: flex-end;
+}
+
+button {
+    padding: 3% 1vw 0 1vw;
+    border-radius: 0.5vw;
+    background: var(--main-pink);
+    border: none;
+    box-shadow: 2px 2px 2px 0px var(--pink-shadow);
+    color: #fff;
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-size: 3vw;
+    font-style: normal;
+    line-height: 60%;
+
+    transition: color 0.5s ease-in-out;
+}
+
+.a {
+    text-decoration: none;
+    color: white;
+
+    transition: color 0.5s ease-in-out;
+}
+
+.link {
+    height: min-content;
+    overflow: hidden;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+
+    transition: color 0.5s ease-in-out;
+}
+
+button:hover {
+    scale: 1;
+    background-color: var(--hover-pink-shadow);
+  }

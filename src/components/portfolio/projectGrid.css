@@ -1,0 +1,27 @@
+.project_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25vw, 25vw));
+  grid-auto-rows: 20vw;
+  gap: 2vw;
+  justify-content: center;
+
+  padding-bottom: 2vw;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* or try contain if you want full image to show */
+  border-radius: 1vw;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .project_grid {
+    grid-template-columns: 75vw;
+    grid-auto-rows: 50vw;
+    gap: 5vw;
+    justify-self: center; /* ✅ Center on mobile */
+    justify-items: center;
+  }
+}

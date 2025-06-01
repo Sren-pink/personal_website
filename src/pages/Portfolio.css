@@ -1,0 +1,12 @@
+.p_title {
+    font-family: Jomhuria;
+    font-style: normal;
+    font-size: 10vw;
+
+    color: var(--main-pink);
+
+    line-height: 75%;
+    letter-spacing: .4vw;
+    text-align: center;
+    text-decoration: none;
+}

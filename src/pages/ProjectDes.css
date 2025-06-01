@@ -1,0 +1,58 @@
+.projectdetail {
+    margin: 0;
+    padding: 0;
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+}
+
+.topsection {
+    padding: 0 5vw;
+
+    display: grid;
+    grid-template-columns: 40vw 1fr;
+    grid-template-rows: 5vw auto;
+    row-gap: 2vw;
+    column-gap: 4vw;
+}
+
+.project_title {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+
+    font-family: Jomhuria;
+    font-size: 8vw;
+    line-height: 75%;
+    letter-spacing: .25vw;
+    font-weight: bold;
+
+    display: flex;
+    justify-content: left;
+
+    color: var(--main-pink);
+}
+
+.cover_img {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+
+    object-fit: contain;
+    width: 40vw;
+    border-radius: 1vw;
+}
+
+.project_des {
+    padding-right: 5vw;
+
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+
+    font-family: "Afacad", sans-serif;
+    font-size: 1.5vw;
+    line-height: 1.5;
+    text-align: left;
+    color: var(--project-des-color);
+
+    display: flex;
+    justify-content: left;
+}

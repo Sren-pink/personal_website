@@ -1,0 +1,12 @@
+.navpattern {
+margin-bottom: -8vw;
+
+    height: 20vw;
+    display: flex;
+    align-items: end;
+    background-color: white;
+}
+
+img {
+    width: 100vw;
+}

@@ -1,0 +1,19 @@
+#root {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: var(--background);
+}
+
+:root {
+  --background: #FCF4F8;
+  --nav-pink: #FFA1BF;
+  --main-pink: #FF88AE;
+  --project-des-color: #FDBFD4;
+  --pink-shadow: #FA90B1;
+  --white: #ffffff;
+  --skills-text: #cedcfc;
+  --bubble-shadow: #ecf8ff;
+  --hover-pink: #ffeaf2;
+  --hover-pink-shadow: #f56391;
+}
