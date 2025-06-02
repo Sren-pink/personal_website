@@ -1,53 +1,71 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { projects } from '../../datas/ProjectData';
-import './ImageCarousel.css';
+// ImageCarousel.jsx
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { projects } from "../../datas/ProjectData";
+import "./ImageCarousel.css";
 
 export default function ImageCarousel() {
-  const navigate = useNavigate();
-  const keys = Object.keys(projects);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate = useNavigate();
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + keys.length) % keys.length);
+    setCurrentIndex((prevIndex) =>
+      (prevIndex - 1 + projectImages.length) % projectImages.length
+    );
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % keys.length);
+    setCurrentIndex((prevIndex) =>
+      (prevIndex + 1) % projectImages.length
+    );
   };
 
-  const goToProject = () => {
-    const id = keys[currentIndex];
-    navigate(`/projects/${id}`);
+  const handleClick = () => {
+    const selectedProject = projectImages[currentIndex];
+    navigate(`/project/${selectedProject.id}`);
   };
 
-  const goToPortfolio = () => {
-    navigate('/portfolio');
-  };
+  const projectImages = Object.values(projects).map((project) => ({
+    id: project.id,
+    image: project.images[0],
+  }));
 
   return (
     <div className="carousel-wrapper">
-      <div className="carousel">
-        <button className="nav-btn left" onClick={handlePrev}>‹</button>
+      <button className="carousel-button left" onClick={handlePrev}>
+        ❮
+      </button>
+      <div className="carousel-container">
+        {projectImages.map((project, index) => {
+          const isCenter = index === currentIndex;
+          const position =
+            (index - currentIndex + projectImages.length) %
+            projectImages.length;
 
-        {keys.map((key, idx) => {
-          const project = projects[key];
-          const isActive = idx === currentIndex;
+          const className = `carousel-item ${
+            isCenter ? "center" : position === 1 || position === projectImages.length - 1 ? "side" : "hidden"
+          }`;
+
           return (
             <img
-              key={key}
-              src={project.images[0]}
-              alt={project.title}
-              className={`carousel-image ${isActive ? 'active' : 'inactive'}`}
-              onClick={isActive ? goToProject : null}
+              key={project.id}
+              src={project.image}
+              alt="project preview"
+              className={className}
+              onClick={isCenter ? handleClick : undefined}
             />
           );
         })}
-
-        <button className="nav-btn right" onClick={handleNext}>›</button>
       </div>
-
-      <button className="portfolio-btn" onClick={goToPortfolio}>Go to Portfolio</button>
+      <button className="carousel-button right" onClick={handleNext}>
+        ❯
+      </button>
+      <button
+        className="portfolio-button"
+        onClick={() => navigate("/portfolio")}
+      >
+        Portfolio
+      </button>
     </div>
   );
 }

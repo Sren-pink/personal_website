@@ -94,7 +94,7 @@ export const projects = {
     title: 'Routsy',
     year: 2025,
     p_a: 'personal',
-    description: 'Routsy is a personal wellness app designed to make using aroma diffusers feel effortless and intentional. The app simplifies control over diffuser routines, letting users schedule start/stop times, set recurring timers, and personalize daily scent experiences without needing to manually turn anything on. Inspired by busy routines and the desire for a calmer atmosphere, Routsy blends utility and comfort — helping users build mindful rituals through automation. The design focuses on clarity, minimalism, and emotional tone, creating a user-friendly flow that encourages consistency and ease.',
+    description: 'Routsy is a personal wellness app designed to make using aroma diffusers feel effortless and intentional. The app simplifies control over diffuser routines, letting users schedule start/stop times, set recurring timers, and personalize daily scent experiences without needing to manually turn anything on. Inspired by busy routines and the desire for a calmer atmosphere, Routsy blends utility and comfort — helping users build mindful rituals through automation. The design focuses on clarity, minimalism, and emotional tone, creating a user-friendly flow that encourages consistency and ease.git',
     images: [routsycover],
     slideEmbed1_title: 'Routsy Slide',
     slideEmbed1: 

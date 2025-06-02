@@ -1,5 +1,6 @@
 import Skills from "../components/home/Skills";
 import Aboutme from "../components/home/AboutMe";
+import ImageCarousel from "../components/home/ImageCarousel";
 
 export function Home() {
 
@@ -14,6 +15,7 @@ export function Home() {
     <div className="home">
       <Aboutme onContactClick={scrollToFooter}/>
       <Skills />
+      <ImageCarousel />
     </div>
   );
 }

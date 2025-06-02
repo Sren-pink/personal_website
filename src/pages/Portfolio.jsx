@@ -6,9 +6,9 @@ import { PersonalProject2025 } from "../components/portfolio/2025/2025_projects"
 export function Portfolio() {
     return (
         <>
-            <PersonalProject2023 />
-            <PersonalProject2024 />
             <PersonalProject2025 />
+            <PersonalProject2024 />
+            <PersonalProject2023 />
         </>
     )
 }
