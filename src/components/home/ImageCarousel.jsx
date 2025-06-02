@@ -1,71 +1,104 @@
-// ImageCarousel.jsx
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { projects } from "../../datas/ProjectData";
-import "./ImageCarousel.css";
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { projects } from '@/datas/ProjectData';
+import './ImageCarousel.css';
 
-export default function ImageCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+const orderedKeys = [
+  'pick-your-pc',
+  'recovered',
+  'pet-care',
+  'fictional-object',
+  'road-safety',
+  'routsy',
+  'dreams',
+];
+
+function ImageCarousel() {
   const navigate = useNavigate();
+  const allProjects = orderedKeys.map((key) => projects[key]);
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const trackRef = useRef(null);
 
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      (prevIndex - 1 + projectImages.length) % projectImages.length
-    );
+  const extendedProjects = [
+    allProjects[allProjects.length - 1],
+    ...allProjects,
+    allProjects[0],
+  ];
+
+  const slideTo = (index) => {
+    setCurrentIndex(index);
+    setIsTransitioning(true);
   };
 
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      (prevIndex + 1) % projectImages.length
-    );
-  };
+  const prevImage = () => slideTo(currentIndex - 1);
+  const nextImage = () => slideTo(currentIndex + 1);
 
-  const handleClick = () => {
-    const selectedProject = projectImages[currentIndex];
-    navigate(`/project/${selectedProject.id}`);
-  };
+  useEffect(() => {
+    const track = trackRef.current;
+    const handleTransitionEnd = () => {
+      setIsTransitioning(false);
+      if (currentIndex === 0) {
+        setCurrentIndex(allProjects.length);
+      } else if (currentIndex === allProjects.length + 1) {
+        setCurrentIndex(1);
+      }
+    };
 
-  const projectImages = Object.values(projects).map((project) => ({
-    id: project.id,
-    image: project.images[0],
-  }));
+    if (track) {
+      track.addEventListener('transitionend', handleTransitionEnd);
+    }
+    return () => {
+      if (track) {
+        track.removeEventListener('transitionend', handleTransitionEnd);
+      }
+    };
+  }, [currentIndex, allProjects.length]);
+
+  const getTransform = () => {
+  const offset = currentIndex * (70 + 2); // width + gap
+  const peekOffset = (100 - 100) / 2; // center 70vw in 100vw space
+  return `translateX(-${offset - peekOffset}vw)`;
+};
 
   return (
     <div className="carousel-wrapper">
-      <button className="carousel-button left" onClick={handlePrev}>
-        ❮
-      </button>
+      <button className="carousel-button left" onClick={prevImage}>←</button>
+
       <div className="carousel-container">
-        {projectImages.map((project, index) => {
-          const isCenter = index === currentIndex;
-          const position =
-            (index - currentIndex + projectImages.length) %
-            projectImages.length;
+        <div
+          className={`carousel-track ${isTransitioning ? 'transition' : 'no-transition'}`}
+          style={{ transform: getTransform() }}
+          ref={trackRef}
+        >
+          {extendedProjects.map((project, index) => {
+            const image = project?.images?.[0];
+            if (!image) return null;
 
-          const className = `carousel-item ${
-            isCenter ? "center" : position === 1 || position === projectImages.length - 1 ? "side" : "hidden"
-          }`;
+            const realIndex = (index - 1 + allProjects.length) % allProjects.length;
+            const isActive = realIndex === ((currentIndex - 1 + allProjects.length) % allProjects.length);
 
-          return (
-            <img
-              key={project.id}
-              src={project.image}
-              alt="project preview"
-              className={className}
-              onClick={isCenter ? handleClick : undefined}
-            />
-          );
-        })}
+            return (
+              <div className="carousel-item" key={`${project.id}-${index}`}>
+                <img
+                  src={image}
+                  alt={project.title}
+                  onClick={() => navigate(`/projects/${project.id}`)}
+                  className={`carousel-img ${isActive ? 'active' : ''}`}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
-      <button className="carousel-button right" onClick={handleNext}>
-        ❯
-      </button>
-      <button
-        className="portfolio-button"
-        onClick={() => navigate("/portfolio")}
-      >
+
+      <button className="carousel-button right" onClick={nextImage}>→</button>
+
+      <button className="carousel-link-button" onClick={() => navigate('/portfolio')}>
         Portfolio
       </button>
     </div>
   );
 }
+
+export default ImageCarousel;

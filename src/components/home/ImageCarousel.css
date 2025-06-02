@@ -1,63 +1,97 @@
-.carousel-container {
-  width: 80vw;
-  margin: 5vw auto;
+.carousel-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3vw;
   position: relative;
-  overflow: hidden;
 }
 
-.carousel-wrapper {
+.carousel-container {
+  overflow: hidden;
+  width: 74vw; /* Allows for 70vw image + 2vw gap on each side */
+}
+
+.carousel-track {
   display: flex;
-  transition: transform 0.5s ease;
-  justify-content: center;
   align-items: center;
   gap: 2vw;
+
+  width: 30vw;
+  height: 35vw;;
 }
 
-.carousel-image {
-  height: 15vw;
+.carousel-track.transition {
+  transition: transform 0.6s ease-in-out;
+}
+
+.carousel-track.no-transition {
+  transition: none;
+}
+
+.carousel-item {
+  flex: 0 0 70vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+  height: 35vw;
+  width: 50vw;
+
+  border-radius: 2vw;
+}
+
+.carousel-img {
+  width: 100%;
+  object-fit: contain;
+  opacity: 0.5;
+  transform: scale(0.9);
+  transition: transform 0.4s ease, opacity 0.4s ease;
   cursor: pointer;
-  opacity: 0.7;
-  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.carousel-image.active {
-  height: 20vw;
+.carousel-img.active {
   opacity: 1;
-  transform: scale(1.1);
-  z-index: 1;
+  transform: scale(1.05);
 }
 
 .carousel-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 2rem;
-  background-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.8);
   border: none;
+  font-size: 2vw;
   cursor: pointer;
-  padding: 0.5rem 1rem;
-  z-index: 2;
+  z-index: 10;
+  padding: 0.5vw 1vw;
+  border-radius: 50%;
+  box-shadow: 0 0.2vw 0.5vw rgba(0, 0, 0, 0.2);
 }
 
 .carousel-button.left {
-  left: 0;
+  left: 5vw;
 }
 
 .carousel-button.right {
-  right: 0;
+  right: 5vw;
 }
 
-@media (max-width: 768px) {
-  .carousel-container {
-    width: 90vw;
-  }
-
-  .carousel-image {
-    height: 12vw;
-  }
-
-  .carousel-image.active {
-    height: 16vw;
-  }
+.carousel-link-button {
+  margin-top: 2vw;
+  padding: 1.05vw 2vw .5vw 2vw;
+  font-size: 2vw;
+  line-height: .75vw;
+  background-color: var(--main-pink);
+  color: white;
+  border: none;
+  border-radius: 0.5vw;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0.2vw 0.5vw rgba(0, 0, 0, 0.2);
 }
 
+.carousel-link-button:hover {
+  background-color: #333;
+}
